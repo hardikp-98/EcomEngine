@@ -14,7 +14,7 @@ export class ProductDetailsAggregator {
     public async addProduct(body: any): Promise<any> {
     try {
 
-        const searchQuery: any = { product_id : body.product_id };
+        const searchQuery: any = { product_id : body.product_id , is_active: true};
         const checkRecord = await this.ProductDetailsService.findOne( searchQuery );
         if(checkRecord) throw new Error ('Product already exist.');
 
@@ -37,7 +37,7 @@ export class ProductDetailsAggregator {
 
     public async deleteProduct(param: any): Promise<any> {
         try {
-            const searchQuery: any = {  product_id: param.productid };
+            const searchQuery: any = {  product_id: param.productid , is_active: true };
             const checkRecord = await this.ProductDetailsService.findOne( searchQuery );
             if(!checkRecord) throw new Error ('Record not found');
 
@@ -60,7 +60,7 @@ export class ProductDetailsAggregator {
 
         public async updateProduct(param: any, body: any): Promise<any>{
             try {
-                const searchQuery: any = {  product_id: param.productid };
+                const searchQuery: any = {  product_id: param.productid , is_active: true };
                 const checkRecord = await this.ProductDetailsService.findOne( searchQuery );
                 if(!checkRecord) throw new Error ('Record not found');
 
@@ -86,7 +86,7 @@ export class ProductDetailsAggregator {
 
         public async getProduct(param: any): Promise<any>{
             try {
-                const searchQuery: any = {  product_id: param.productid };
+                const searchQuery: any = {  product_id: param.productid , is_active: true };
                 const checkRecord = await this.ProductDetailsService.findOne( searchQuery );
                 if(!checkRecord) throw new Error ('Record not found');
                 return checkRecord;
@@ -101,7 +101,7 @@ export class ProductDetailsAggregator {
                 const page = param.page ? parseInt(param.page) : 1;
                 const pageSize = param.pageSize ? parseInt(param.pageSize) : 10;
                 const offset = (page - 1) * pageSize;
-                const rows = await this.ProductDetailsService.findAndCountAll(undefined, pageSize, offset);
+                const rows = await this.ProductDetailsService.findAndCountAll({is_active: true}, pageSize, offset);
                 const result : any = {}
                 result.pagefilter = param;
                 result.rowData = [...rows.rows];

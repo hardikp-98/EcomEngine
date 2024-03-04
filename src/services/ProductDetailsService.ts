@@ -17,7 +17,7 @@ export class ProductDetailsService {
     }
 
     public update(searchQuery: any, updateQuery: any, transaction?: Transaction) {
-        return this.productDetailsRepository.update(updateQuery, { where: searchQuery, transaction });
+        return this.productDetailsRepository.update(searchQuery, updateQuery, transaction);
     }
 
     public findOne(searchQuery: any): Promise<any> {
