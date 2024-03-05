@@ -1,7 +1,7 @@
 ---
 # ECOM API Engine
 
-Welcome to the ECOM API Engine README. Follow these steps to set up and run the ECOM API engine on your local machine.
+Welcome to the ECOM API Engine README. Follow these steps to set up and run the ECOM API engine with sequelize db on your local machine.
 
 ## Installation
 
@@ -22,6 +22,8 @@ Welcome to the ECOM API Engine README. Follow these steps to set up and run the 
 
 3. Open the configuration file and fill in below details (Mandatory):
 
+`Note: make sure you have proper postgres/mysql connection`
+
     Path: `/src/config/local.ts`
 
     ```typescript
@@ -31,7 +33,7 @@ Welcome to the ECOM API Engine README. Follow these steps to set up and run the 
         DB_NAME: 'ecomengine',
         DB_USERNAME: 'postgres',
         DB_PASSWORD: 'admin',
-        DB_SCHEMA:'ecomstore',
+        DB_SCHEMA:'W',
         SERVER_PORT:8000,  // Port where you want to host application 
         JWT_SECRETKEY : 'Psh3iu2dhbjhb33322', // Secret key
         JWT_EXPIREIN: '1h', // JWT expiry 
